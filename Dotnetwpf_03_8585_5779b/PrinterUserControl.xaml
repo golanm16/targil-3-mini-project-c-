@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Dotnetwpf_03_8585_5779b.PrinterUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dotnetwpf_03_8585_5779b"
+             mc:Ignorable="d" 
+              MinWidth="0.2" BorderBrush="white" BorderThickness="1">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Name="inkLable" Content="Ink:" />
+            <Label Grid.Row="1" Name="pageLabel" Content="Pages:" />
+            <ProgressBar Grid.Column="1" Name="inkCountProgressBar" Value="23" ToolTip="{Binding ElementName=inkCountProgressBar, Path=Value}" Foreground="LimeGreen"/>
+            <Slider Name="pageCountSlider" Grid.Column="1" Grid.Row="1" Value="200" Maximum="{x:Static local:PrinterUserControl.MaxPages}" ToolTip="{Binding ElementName=pageCountSlider, Path=Value}"/>
+        </Grid>
+        <Image Grid.Row=" 0" Source="images/printer.jpg"/>
+        <Label Grid.Row="1" Name="PrinterNameLabel" Content="printer Name" MouseEnter="PrinterNameLabel_MouseEnter" MouseLeave="PrinterNameLabel_MouseLeave"  HorizontalAlignment="Center" FontSize="16">
+        </Label>
+        
+    </Grid >
+    
+</UserControl>
