@@ -30,6 +30,7 @@ namespace Dotnetwpf_03_8585_5779b
         const int MAX_PAGES = 400;
         const int MIN_ADD_PAGES = MAX_PAGES / 10;
         const int MAX_PRINT_PAGES = 55;
+        //==========================================================================//
         public PrinterUserControl()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace Dotnetwpf_03_8585_5779b
             inkCountProgressBar.Value = r.Next((int)MIN_ADD_INK, (int)MAX_INK);
             pageCountSlider.Value = r.Next(MIN_ADD_PAGES, MAX_PAGES);
         }
+        //==========================================================================//
         private void PrinterNameLabel_MouseEnter(object sender, MouseEventArgs e)
         {
             PrinterNameLabel.FontSize += 10;
@@ -45,11 +47,14 @@ namespace Dotnetwpf_03_8585_5779b
         {
             PrinterNameLabel.FontSize -= 10;
         }
+        //==========================================================================//
         public void Print()
         {
             PageCount -= r.Next(MAX_PRINT_PAGES);
             InkCount -= r.Next((int)MAX_PRINT_INK);
         }
+        //==========================================================================//
+        //events + handlers:
         //public event PrinterEventHandler PageMissing;
         //public event PrinterEventHandler InkEmpty;
         public event EventHandler<PrinterEventArgs> PageMissing;
@@ -65,6 +70,8 @@ namespace Dotnetwpf_03_8585_5779b
             if (PageMissing!=null)
                 PageMissing(this, new PrinterEventArgs(true, DateTime.Now, "Pages missing: "+a, this.PrinterName));
         }
+        //==========================================================================//
+        //getter setter functions:
         public string PrinterName
         {
             get=> (string)PrinterNameLabel.Content;
@@ -113,6 +120,7 @@ namespace Dotnetwpf_03_8585_5779b
                     inkCountProgressBar.Value = value;
             }
         }
+        //==========================================================================//
         public void AddPages()
         {
             pageCountSlider.Value += r.Next(MIN_ADD_PAGES, MAX_PAGES);
